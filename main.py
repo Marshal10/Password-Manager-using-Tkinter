@@ -79,37 +79,35 @@ window=Tk()
 window.title("Password Manager")
 window.config(padx=50,pady=50)
 
-canvas=Canvas(width=200,height=200,highlightthickness=0)
+canvas=Canvas(width=200,height=200)
 logo=PhotoImage(file="logo.png")
 canvas.create_image(100,100,image=logo)
 canvas.grid(column=1,row=0)
 
+#Labels
 web_lbl=Label(text="Website:")
 web_lbl.grid(column=0,row=1,pady=5)
-
-web_input=Entry(width=21)
-web_input.focus()
-web_input.grid(column=1,row=1,pady=5,sticky=W+E,padx=10)
-
 email_lbl=Label(text="Email/Username:")
 email_lbl.grid(column=0,row=2,pady=5)
-
-email_input=Entry(width=35)
-email_input.insert(END,'xyz@gmail.com')
-email_input.grid(column=1,row=2,pady=5,columnspan=2,sticky=W+E,padx=10)
-
 pwd_lbl=Label(text="Password:")
 pwd_lbl.grid(column=0,row=3,pady=5)
 
+#Entries
+web_input=Entry(width=21)
+web_input.focus()
+web_input.grid(column=1,row=1,pady=5,sticky=W+E,padx=10)
+email_input=Entry(width=35)
+email_input.insert(END,'xyz@gmail.com')
+email_input.grid(column=1,row=2,pady=5,columnspan=2,sticky=W+E,padx=10)
 pwd_input=Entry(width=21)
-pwd_input.grid(column=1,row=3,padx=10,pady=5,sticky=W+E) 
+pwd_input.grid(column=1,row=3,padx=10,pady=5,sticky=W+E)
 
+
+#Buttons
 generate_btn=Button(text="Generate Password",command=generate_pwd)
 generate_btn.grid(column=2,row=3,padx=10,pady=5)
-
 add_btn=Button(text="Add",width=36,command=save_pwd)
 add_btn.grid(column=1,row=4,padx=10,columnspan=2,pady=5,sticky=W+E)
-
 search_btn=Button(text="Search",command=search)
 search_btn.grid(column=2,row=1,sticky=W+E,padx=10,pady=5)
 
