@@ -1,16 +1,22 @@
 from tkinter import *
+from tkinter import messagebox 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_pwd():
-    website=web_input.get()
+    website=web_input.get().title()
     email=email_input.get()
     password=pwd_input.get()
-    with open("data.txt",mode="a+") as file:
-        file.write(f"{website} | {email} | {password}\n")
-    web_input.delete(0,'end')
-    pwd_input.delete(0,'end')
-    web_input.focus()
+    if len(website)<=0 or len(password)<=0:
+        messagebox.showerror("Oops","Please don't leave any of the fields empty")
+        return
+    confirm_save=messagebox.askokcancel(title=website,message=f"Email: {email}\nPassword: {password}\n is this ok?")
+    if confirm_save:
+        with open("data.txt",mode="a+") as file:
+            file.write(f"{website} | {email} | {password}\n")
+        web_input.delete(0,'end')
+        pwd_input.delete(0,'end')
+        web_input.focus()
 # ---------------------------- UI SETUP ------------------------------- #
 window=Tk()
 window.title("Password Manager")
